@@ -15,7 +15,6 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import SortIcon from '@mui/icons-material/Sort';
 
 import Chip from '@mui/material/Chip';
 import FormControl from '@mui/material/FormControl';
@@ -213,7 +212,7 @@ export default function App() {
         <Card className="mb-6">
           <CardContent>
             <Box className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
-              {/* 検索バー（型エラー解消のため slotProps を使用） */}
+              {/* 検索バー */}
               <TextField
                 size="small"
                 placeholder="タイトルを検索..."
