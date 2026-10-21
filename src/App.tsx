@@ -68,11 +68,8 @@ export default function App() {
     severity: 'success',
   });
 
-  // 初期サンプルデータ
-  const [animeList, setAnimeList] = useState<AnimeItem[]>([
-    { id: '1', title: '葬送のフリーレン', checked: false, episode: 12, broadcastDay: '金曜日', createdAt: 1 },
-    { id: '2', title: '呪術廻戦', checked: true, episode: 24, broadcastDay: '木曜日', createdAt: 2 },
-  ]);
+  // 初期アニメリスト(空)
+  const [animeList, setAnimeList] = useState<AnimeItem[]>([]);
 
   // テーマ切り替え (ダークモード / ライトモード)
   const theme = useMemo(
