@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useMemo } from 'react';
 
-// MUI Components (合計20種類以上)
+// MUI Components
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -29,7 +29,6 @@ import Alert from '@mui/material/Alert';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
 import Badge from '@mui/material/Badge';
 import Tooltip from '@mui/material/Tooltip';
 import Card from '@mui/material/Card';
@@ -214,32 +213,27 @@ export default function App() {
         <Card className="mb-6">
           <CardContent>
             <Box className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
-              {/* 検索バー */}
+              {/* 検索バー（型エラー解消のため slotProps を使用） */}
               <TextField
                 size="small"
                 placeholder="タイトルを検索..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full md:w-72"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    startAdornment: <SearchIcon className="mr-2 text-gray-400" />,
+                  },
                 }}
               />
 
               {/* ソート選択ドロップダウン */}
               <FormControl size="small" className="w-full md:w-48">
-                <InputLabel className="flex items-center gap-1">
-                  並び替え
-                </InputLabel>
+                <InputLabel>並び替え</InputLabel>
                 <Select
                   value={sortBy}
                   label="並び替え"
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  startAdornment={<SortIcon className="mr-1 text-gray-500" />}
                 >
                   <MenuItem value="created">追加日順（新しい順）</MenuItem>
                   <MenuItem value="day">更新曜日順</MenuItem>
@@ -294,10 +288,11 @@ export default function App() {
               <Typography>該当するアニメが見つかりません</Typography>
             </Box>
           ) : (
-            <List divider>
+            <List>
               {filteredAndSortedList.map((anime) => (
                 <ListItem
                   key={anime.id}
+                  divider
                   secondaryAction={
                     <Box className="flex items-center gap-2">
                       <Tooltip title="クリックして話数を追加">
