@@ -158,9 +158,9 @@ export default function App() {
       <CssBaseline />
       <Container maxWidth="md" className="py-8 min-h-screen">
         {/* ヘッダー領域 */}
-        <Paper elevation={3} className="p-6 mb-6 rounded-2xl">
-          <Box className="flex justify-between items-center mb-4">
-            <Typography variant="h4" component="h1" className="font-bold">
+        <Paper elevation={2} className="p-5 sm:p-8 mb-6 rounded-3xl">
+          <Box className="flex justify-between items-center mb-6">
+            <Typography variant="h5" component="h1" className="font-bold tracking-tight">
               📺 アニメ視聴チェックリスト
             </Typography>
             <Tooltip title={darkMode ? 'ライトモードに変更' : 'ダークモードに変更'}>
@@ -205,17 +205,17 @@ export default function App() {
           </Box>
         </Paper>
 
-        {/* コントロールパネル（検索・フィルター・ソート） */}
-        <Card className="mb-6">
-          <CardContent>
-            <Box className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
+{/* コントロールパネル（検索・フィルター・ソート） */}
+        <Card className="mb-6 rounded-2xl" elevation={1}>
+          <CardContent className="p-4 sm:p-6">
+            <Box className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 mb-4">
               {/* 検索バー */}
               <TextField
                 size="small"
                 placeholder="タイトルを検索..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full md:w-72"
+                className="w-full sm:w-72"
                 slotProps={{
                   input: {
                     startAdornment: <SearchIcon className="mr-2 text-gray-400" />,
@@ -224,7 +224,7 @@ export default function App() {
               />
 
               {/* ソート選択ドロップダウン */}
-              <FormControl size="small" className="w-full md:w-48">
+              <FormControl size="small" className="w-full sm:w-48">
                 <InputLabel>並び替え</InputLabel>
                 <Select
                   value={sortBy}
@@ -239,7 +239,7 @@ export default function App() {
               </FormControl>
             </Box>
 
-            <Divider className="my-2" />
+            <Divider className="my-3" />
 
             {/* ステータスタブ */}
             <Tabs
@@ -276,7 +276,6 @@ export default function App() {
             </Tabs>
           </CardContent>
         </Card>
-
         {/* アニメ一覧リスト */}
         <Paper elevation={2}>
           {filteredAndSortedList.length === 0 ? (
